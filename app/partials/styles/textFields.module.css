@@ -1,0 +1,24 @@
+.aboutUs,
+.faq {
+	max-width: 95%;
+	font-weight: 500;
+	box-shadow: var(--black-shadow);
+	background: rgb(255, 255, 255);
+	background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.5) 100%);
+	margin: 20px auto;
+	border-radius: 15px;
+	padding: 10px 20px;
+}
+
+.qns {
+	background: transparent;
+}
+
+.qns:hover {
+	font-weight: 500;
+}
+
+.ans {
+	margin: 3px 6px auto;
+	font-weight: 600;
+}

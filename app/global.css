@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+	--black-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6) inset;
+	--white-shadow-1: 0px 0px 15px 0px rgba(255, 255, 255, 0.5) inset;
+	--white-shadow-2: 0px 0px 15px 0px rgba(255, 255, 255, 1) inset;
+}
+body {
+	margin: 0;
+	padding: 0;
+}
+a.nav-link:hover {
+	color: rgb(255, 0, 255);
+	text-decoration: underline;
+	transition: ease-in 0.2s;
+	font-weight: 500;
+}
+a.nav-link {
+	color: black;
+	font-weight: 400;
+}
+header {
+	margin-top: 10px;
+}
