@@ -7,13 +7,15 @@
   <h3 align="center">CoDriver: Your Travel Companion for Shared Journeys</h3>
 
   <p align="center">
-    <a href="https://github.com/Raven-Code/CoDriver"><strong>Explore the docs »</strong></a>
+    <img src="https://wakatime.com/badge/user/a834cc3a-cc0a-4aa3-83a4-a825e4e9c3bf/project/f3a32c10-9299-4428-a0c1-3f9176d93ac3.svg" alt="Development Time" />
+    <br />
+    <a href="https://github.com/Raven-Code/CoDriver"><b>Explore the docs »</b></a>
     <br/>
     <br/>
     <a href="https://github.com/Raven-Code/CoDriver">View Demo</a>
-    .
+    &nbsp;
     <a href="https://github.com/Raven-Code/CoDriver/issues">Report Bug</a>
-    .
+    &nbsp;
     <a href="https://github.com/Raven-Code/CoDriver/issues">Request Feature</a>
   </p>
 </p>
