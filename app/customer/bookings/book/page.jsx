@@ -348,126 +348,69 @@ function CustomerBookingsUnwrapped() {
 	};
 
 	return (
-		<div style={{ padding: '20px', height: '100%', display: 'flex', columnGap: '20px' }}>
-			<div
-				style={{
-					display: 'block',
-					marginRight: 'auto',
-					flex: 0.5,
-					backgroundColor: 'rgba(0, 0, 0, 0.9)',
-					color: 'white',
-					padding: '20px',
-					width: '50%',
-					height: '100%',
-				}}>
-				<h1 style={{ textAlign: 'left', marginBottom: '40px' }} className='text-4xl'>
-					Hi John Tan ID: 22
-				</h1>
-				<h4 style={{ textAlign: 'left', marginBottom: '40px' }} className='text-2xl'>
-					Here are your current bookings :
-				</h4>
-				<div>
-					<div style={{ height: '50vh', overflow: 'auto' }}>
-						<TableContainer>
-							<Table>
-								<TableHead>
-									<TableRow>
-										<TableCell>
-											<Checkbox
-												color='primary'
-												style={{
-													color: 'white',
-												}}
-												checked={
-													selectedRows.length === filteredBookings.length
-												}
-												indeterminate={
-													selectedRows.length > 0 &&
-													selectedRows.length < filteredBookings.length
-												}
-												onChange={() =>
-													selectedRows.length === filteredBookings.length
-														? setSelectedRows([])
-														: setSelectedRows(
-																filteredBookings.map(
-																	booking => booking.bookingId
-																)
-														  )
-												}
-											/>
-										</TableCell>
-										<TableCell sx={{ ...lableStyle, fontWeight: 'bold' }}>
-											ID
-										</TableCell>
-										<TableCell sx={{ ...lableStyle, fontWeight: 'bold' }}>
-											Date/Time
-										</TableCell>
-										<TableCell sx={{ ...lableStyle, fontWeight: 'bold' }}>
-											View booking
-										</TableCell>
-										<TableCell sx={{ ...lableStyle, fontWeight: 'bold' }}>
-											Status
-										</TableCell>
-										<TableCell>
-											<div
-												style={{
-													display: 'flex',
-													alignItems: 'center',
-													flexWrap: 'wrap',
-												}}>
-												<div style={{ margin: 'auto' }}>
-													<IconButton>
-														<Trash sx={{ color: 'white' }} />
-													</IconButton>
-												</div>
-											</div>
-										</TableCell>
-									</TableRow>
-								</TableHead>
-								<TableBody>
-									{displayedBookings.map(booking => (
-										<TableRow
-											key={booking.bookingId}
-											style={{
-												background: selectedRows.includes(booking.bookingId)
-													? 'rgba(191, 181, 186, 0.6)'
-													: 'inherit',
-											}}>
+		<div>
+			<div style={{ padding: '20px', height: '100%', display: 'flex', columnGap: '20px' }}>
+				<div
+					style={{
+						display: 'block',
+						marginRight: 'auto',
+						flex: 0.5,
+						backgroundColor: 'rgba(0, 0, 0, 0.9)',
+						color: 'white',
+						padding: '20px',
+						width: '50%',
+						height: '100%',
+					}}>
+					<h1 style={{ textAlign: 'left', marginBottom: '40px' }} className='text-4xl'>
+						Hi John Tan ID: 22
+					</h1>
+					<h4 style={{ textAlign: 'left', marginBottom: '40px' }} className='text-2xl'>
+						Here are your current bookings :
+					</h4>
+					<div>
+						<div style={{ height: '50vh', overflow: 'auto' }}>
+							<TableContainer>
+								<Table>
+									<TableHead>
+										<TableRow>
 											<TableCell>
 												<Checkbox
 													color='primary'
 													style={{
 														color: 'white',
 													}}
-													checked={selectedRows.includes(
-														booking.bookingId
-													)}
+													checked={
+														selectedRows.length ===
+														filteredBookings.length
+													}
+													indeterminate={
+														selectedRows.length > 0 &&
+														selectedRows.length <
+															filteredBookings.length
+													}
 													onChange={() =>
-														handleSelectedRows(booking.bookingId)
+														selectedRows.length ===
+														filteredBookings.length
+															? setSelectedRows([])
+															: setSelectedRows(
+																	filteredBookings.map(
+																		booking => booking.bookingId
+																	)
+															  )
 													}
 												/>
 											</TableCell>
-											<TableCell sx={{ color: 'white', fontSize: '16px' }}>
-												{booking.bookingId}
+											<TableCell sx={{ ...lableStyle, fontWeight: 'bold' }}>
+												ID
 											</TableCell>
-											<TableCell sx={{ color: 'white', fontSize: '16px' }}>
-												{booking.scheduledDate} / {booking.scheduledTime}{' '}
-												HRS
+											<TableCell sx={{ ...lableStyle, fontWeight: 'bold' }}>
+												Date/Time
 											</TableCell>
-											<TableCell>
-												<Button
-													sx={{ color: 'white' }}
-													onClick={() =>
-														handleViewBooking(booking.bookingId)
-													}
-													variant='contained' // Add this prop to make it a contained button
-													style={{ backgroundColor: '#088F8F' }} // Add your desired background color
-												>
-													view
-												</Button>
+											<TableCell sx={{ ...lableStyle, fontWeight: 'bold' }}>
+												View booking
 											</TableCell>
-											<TableCell sx={{ color: 'white', fontSize: '16px' }}>
-												{booking.status}
+											<TableCell sx={{ ...lableStyle, fontWeight: 'bold' }}>
+												Status
 											</TableCell>
 											<TableCell>
 												<div
@@ -477,137 +420,490 @@ function CustomerBookingsUnwrapped() {
 														flexWrap: 'wrap',
 													}}>
 													<div style={{ margin: 'auto' }}>
-														<IconButton
-															onClick={() => {
-																handleDelete(booking.bookingId);
-															}}>
-															<Trash sx={{ color: '#c40000' }} />
+														<IconButton>
+															<Trash sx={{ color: 'white' }} />
 														</IconButton>
 													</div>
 												</div>
 											</TableCell>
 										</TableRow>
-									))}
-								</TableBody>
-
-								<Modal
-									open={viewModalOpen}
-									onClose={handleCloseViewModal}
-									aria-labelledby='modal-modal-title'
-									aria-describedby='modal-modal-description'>
-									<Box
-										sx={style}
-										style={{
-											display: 'flex',
-											flexDirection: 'column',
-											alignItems: 'left',
-										}}>
-										<Typography
-											id='modal-modal-title'
-											sx={{ alignSelf: 'flex-start', fontWeight: 'bold' }}
-											variant='h4'
-											component='h2'>
-											Booking Details
-										</Typography>
-										<hr style={{ borderTop: '2px dashed black  ' }} />
-										<Typography id='modal-modal-description' sx={{ mt: 2 }}>
-											{/* Step 4: Display the selected booking data inside the Modal */}
-											{selectedBooking && (
-												<>
-													<h5>
-														<p>Driver ID: {selectedBooking.driverId}</p>
-														<p>Customer ID: {selectedBooking.custId}</p>
-													</h5>
-													<hr
-														style={{ borderTop: '2px dashed black  ' }}
+									</TableHead>
+									<TableBody>
+										{displayedBookings.map(booking => (
+											<TableRow
+												key={booking.bookingId}
+												style={{
+													background: selectedRows.includes(
+														booking.bookingId
+													)
+														? 'rgba(191, 181, 186, 0.6)'
+														: 'inherit',
+												}}>
+												<TableCell>
+													<Checkbox
+														color='primary'
+														style={{
+															color: 'white',
+														}}
+														checked={selectedRows.includes(
+															booking.bookingId
+														)}
+														onChange={() =>
+															handleSelectedRows(booking.bookingId)
+														}
 													/>
-													<p>Booking ID: {selectedBooking.bookingId}</p>
-													<p>
-														Location From:{' '}
-														{selectedBooking.locationFrom}
-													</p>
-													<p>Location To: {selectedBooking.locationTo}</p>
-													<p>
-														Scheduled Date:{' '}
-														{selectedBooking.scheduledDate}
-													</p>
-													<p>
-														Scheduled Time:{' '}
-														{selectedBooking.scheduledTime}
-													</p>
-													<p>Status: {selectedBooking.status}</p>
-												</>
-											)}
-										</Typography>
-									</Box>
-								</Modal>
-							</Table>
-						</TableContainer>
-					</div>
+												</TableCell>
+												<TableCell
+													sx={{ color: 'white', fontSize: '16px' }}>
+													{booking.bookingId}
+												</TableCell>
+												<TableCell
+													sx={{ color: 'white', fontSize: '16px' }}>
+													{booking.scheduledDate} /{' '}
+													{booking.scheduledTime} HRS
+												</TableCell>
+												<TableCell>
+													<Button
+														sx={{ color: 'white' }}
+														onClick={() =>
+															handleViewBooking(booking.bookingId)
+														}
+														variant='contained' // Add this prop to make it a contained button
+														style={{ backgroundColor: '#088F8F' }} // Add your desired background color
+													>
+														view
+													</Button>
+												</TableCell>
+												<TableCell
+													sx={{ color: 'white', fontSize: '16px' }}>
+													{booking.status}
+												</TableCell>
+												<TableCell>
+													<div
+														style={{
+															display: 'flex',
+															alignItems: 'center',
+															flexWrap: 'wrap',
+														}}>
+														<div style={{ margin: 'auto' }}>
+															<IconButton
+																onClick={() => {
+																	handleDelete(booking.bookingId);
+																}}>
+																<Trash sx={{ color: '#c40000' }} />
+															</IconButton>
+														</div>
+													</div>
+												</TableCell>
+											</TableRow>
+										))}
+									</TableBody>
 
-					<TablePagination
-						sx={{
-							color: '#C0C0C0',
-							fontWeight: 'bold',
-							'.MuiTablePagination-displayedRows': {
+									<Modal
+										open={viewModalOpen}
+										onClose={handleCloseViewModal}
+										aria-labelledby='modal-modal-title'
+										aria-describedby='modal-modal-description'>
+										<Box
+											sx={style}
+											style={{
+												display: 'flex',
+												flexDirection: 'column',
+												alignItems: 'left',
+											}}>
+											<Typography
+												id='modal-modal-title'
+												sx={{ alignSelf: 'flex-start', fontWeight: 'bold' }}
+												variant='h4'
+												component='h2'>
+												Booking Details
+											</Typography>
+											<hr style={{ borderTop: '2px dashed black  ' }} />
+											<Typography id='modal-modal-description' sx={{ mt: 2 }}>
+												{/* Step 4: Display the selected booking data inside the Modal */}
+												{selectedBooking && (
+													<>
+														<h5>
+															<p>
+																Driver ID:{' '}
+																{selectedBooking.driverId}
+															</p>
+															<p>
+																Customer ID:{' '}
+																{selectedBooking.custId}
+															</p>
+														</h5>
+														<hr
+															style={{
+																borderTop: '2px dashed black  ',
+															}}
+														/>
+														<p>
+															Booking ID: {selectedBooking.bookingId}
+														</p>
+														<p>
+															Location From:{' '}
+															{selectedBooking.locationFrom}
+														</p>
+														<p>
+															Location To:{' '}
+															{selectedBooking.locationTo}
+														</p>
+														<p>
+															Scheduled Date:{' '}
+															{selectedBooking.scheduledDate}
+														</p>
+														<p>
+															Scheduled Time:{' '}
+															{selectedBooking.scheduledTime}
+														</p>
+														<p>Status: {selectedBooking.status}</p>
+													</>
+												)}
+											</Typography>
+										</Box>
+									</Modal>
+								</Table>
+							</TableContainer>
+						</div>
+
+						<TablePagination
+							sx={{
+								color: '#C0C0C0',
+								fontWeight: 'bold',
+								'.MuiTablePagination-displayedRows': {
+									margin: 'auto',
+									textAlign: 'center',
+									fontSize: '20px',
+								},
+							}}
+							component='div'
+							count={filteredBookings.length} // Total number of rows
+							page={page}
+							rowsPerPage={rowsPerPage}
+							onPageChange={handlePageChange}
+							rowsPerPageOptions={[rowsPerPage]} // Provide only the desired rows per page value as an array
+						/>
+
+						<div
+							style={{
+								display: 'flex',
+								justifyContent: 'space-evenly',
 								margin: 'auto',
-								textAlign: 'center',
-								fontSize: '20px',
-							},
-						}}
-						component='div'
-						count={filteredBookings.length} // Total number of rows
-						page={page}
-						rowsPerPage={rowsPerPage}
-						onPageChange={handlePageChange}
-						rowsPerPageOptions={[rowsPerPage]} // Provide only the desired rows per page value as an array
-					/>
-
-					<div
-						style={{ display: 'flex', justifyContent: 'space-evenly', margin: 'auto' }}>
-						<button
-							style={{
-								...bookingButtonStyle,
-								backgroundColor: isBookingButtonHovering ? '#064f4f' : '#088F8F',
-								cursor: isBookingButtonHovering ? 'pointer' : 'default',
-							}}
-							type='button'
-							id='bookingButton'
-							onMouseOver={() => setIsBookingButtonHovering(true)}
-							onMouseOut={() => setIsBookingButtonHovering(false)}
-							className='bookingButton'>
-							Make a booking
-						</button>
-
-						<button
-							style={{
-								...bookingButtonStyle,
-								cursor: isItemSelected ? 'pointer' : 'not-allowed',
-								backgroundColor: isItemSelected
-									? isDeleteButtonHovering
+							}}>
+							<button
+								style={{
+									...bookingButtonStyle,
+									backgroundColor: isBookingButtonHovering
 										? '#064f4f'
-										: '#088F8F'
-									: 'gray',
-							}}
-							onClick={() => {
-								if (isItemSelected) {
-									handleOpenDeleteModal();
-								}
-							}}
-							disabled={!isItemSelected}
-							onMouseOver={() => {
-								if (isItemSelected) setIsDeleteButtonHovering(true);
-							}}
-							onMouseOut={() => {
-								if (isItemSelected) setIsDeleteButtonHovering(false);
-							}}
-							className='deleteButton'>
-							Delete Selected
-						</button>
+										: '#088F8F',
+									cursor: isBookingButtonHovering ? 'pointer' : 'default',
+								}}
+								type='button'
+								id='bookingButton'
+								onMouseOver={() => setIsBookingButtonHovering(true)}
+								onMouseOut={() => setIsBookingButtonHovering(false)}
+								className='bookingButton'>
+								Make a booking
+							</button>
 
+							<button
+								style={{
+									...bookingButtonStyle,
+									cursor: isItemSelected ? 'pointer' : 'not-allowed',
+									backgroundColor: isItemSelected
+										? isDeleteButtonHovering
+											? '#064f4f'
+											: '#088F8F'
+										: 'gray',
+								}}
+								onClick={() => {
+									if (isItemSelected) {
+										handleOpenDeleteModal();
+									}
+								}}
+								disabled={!isItemSelected}
+								onMouseOver={() => {
+									if (isItemSelected) setIsDeleteButtonHovering(true);
+								}}
+								onMouseOut={() => {
+									if (isItemSelected) setIsDeleteButtonHovering(false);
+								}}
+								className='deleteButton'>
+								Delete Selected
+							</button>
+
+							<Modal
+								open={deleteModalOpen}
+								onClose={handleCloseDeleteModal}
+								aria-labelledby='modal-modal-title'
+								aria-describedby='modal-modal-description'>
+								<Box
+									sx={style}
+									style={{
+										display: 'flex',
+										flexDirection: 'column',
+										alignItems: 'left',
+									}}>
+									<Typography
+										id='modal-modal-title'
+										sx={{ alignSelf: 'flex-start' }}
+										variant='h4'
+										component='h2'>
+										Delete warning!
+									</Typography>
+									<Typography id='modal-modal-description' sx={{ mt: 4 }}>
+										Are you sure you want to delete the following bookings:
+									</Typography>
+									<hr style={{ borderTop: '2px dashed black  ' }} />
+									<ul style={{ color: '#088F8F', alignSelf: 'flex-start' }}>
+										{selectedRows.map(bookingId => (
+											<li key={bookingId}>Booking ID {bookingId}</li>
+										))}
+									</ul>
+									<div
+										style={{ marginTop: 'auto', display: 'flex', gap: '10px' }}>
+										<button
+											style={{
+												padding: '8px',
+												width: '100px',
+												color: 'white',
+												backgroundColor: 'grey',
+											}}
+											onClick={handleCloseDeleteModal}>
+											Cancel
+										</button>
+
+										<button
+											style={{
+												padding: '8px',
+												width: '100px',
+												color: 'white',
+												backgroundColor: '#c40000',
+											}}
+											onClick={() => {
+												handleDeleteSelected();
+												handleCloseDeleteModal();
+											}}>
+											Delete
+										</button>
+									</div>
+								</Box>
+							</Modal>
+						</div>
+					</div>
+				</div>
+
+				<div
+					id='custform'
+					style={{
+						display: 'none',
+						marginLeft: 'auto',
+						flex: 0.5,
+						backgroundColor: 'rgba(255, 255, 255, 0.9)',
+						color: 'white',
+						padding: '20px',
+						width: '50%',
+						height: '100%',
+					}}>
+					<h1 style={{ textAlign: 'center', color: 'black', marginBottom: '40px' }}>
+						Customer Booking Page
+					</h1>
+					<h4 style={{ textAlign: 'center', color: 'black', marginBottom: '40px' }}>
+						Create a booking below!
+					</h4>
+
+					<form onSubmit={formik.handleSubmit}>
+						<div style={{ padding: '20px', height: '50vh' }}>
+							<div style={{ marginBottom: '20px' }}>
+								<TextField
+									color='secondary'
+									fullWidth
+									id='locationTo'
+									name='locationTo'
+									label='Location To'
+									placeholder='Select a location'
+									value={formik.values.locationTo}
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									error={
+										formik.touched.locationTo &&
+										Boolean(formik.errors.locationTo)
+									}
+									helperText={
+										formik.touched.locationTo && formik.errors.locationTo
+									}
+									onClick={handleLocationToFieldClick}
+									ref={locationToRef}
+								/>
+							</div>
+
+							<div style={{ marginBottom: '20px' }}>
+								<TextField
+									color='secondary'
+									fullWidth
+									id='locationFrom'
+									name='locationFrom'
+									label='Location From'
+									placeholder='Select a location'
+									value={formik.values.locationFrom}
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									error={
+										formik.touched.locationFrom &&
+										Boolean(formik.errors.locationFrom)
+									}
+									helperText={
+										formik.touched.locationFrom && formik.errors.locationFrom
+									}
+									onClick={handleLocationFromFieldClick}
+									ref={locationFromRef}
+								/>
+								{showSavedLocationFrom && (
+									<div
+										style={{
+											position: 'absolute',
+											top: '100%',
+											left: 0,
+											right: 0,
+											bottom: 0,
+											zIndex: 1,
+											background: 'rgba(0, 0, 0, 0.5)',
+										}}>
+										<SavedLocation
+											onLocationSelect={handleLocationFromSelect}
+										/>
+									</div>
+								)}
+							</div>
+
+							<div
+								style={{
+									marginBottom: '20px',
+									display: 'flex',
+									justifyContent: 'space-between',
+								}}>
+								<TextField
+									color='secondary'
+									fullWidth
+									id='scheduledTime'
+									name='scheduledTime'
+									label='Scheduled Time'
+									type='number'
+									placeholder='24 hour standard (xxxx)'
+									value={formik.values.scheduledTime}
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									style={{ width: '40%' }}
+									error={
+										formik.touched.scheduledTime &&
+										Boolean(formik.errors.scheduledTime)
+									}
+									helperText={
+										formik.touched.scheduledTime && formik.errors.scheduledTime
+									}
+								/>
+
+								<TextField
+									color='secondary'
+									fullWidth
+									id='scheduledDate'
+									name='scheduledDate'
+									type='date'
+									value={formik.values.scheduledDate}
+									onChange={formik.handleChange}
+									onBlur={formik.handleBlur}
+									style={{ width: '40%' }}
+									error={
+										formik.touched.scheduledDate &&
+										Boolean(formik.errors.scheduledDate)
+									}
+									helperText={
+										formik.touched.scheduledDate && formik.errors.scheduledDate
+									}
+								/>
+							</div>
+
+							<div
+								style={{
+									marginBottom: '20px',
+									display: 'flex',
+									justifyContent: 'space-between',
+								}}>
+								<FormControl style={{ width: '40%' }}>
+									<InputLabel>Payment Method</InputLabel>
+									<Select
+										color='secondary'
+										id='paymentMethod'
+										name='paymentMethod'
+										value={formik.values.paymentMethod}
+										onChange={formik.handleChange}
+										onBlur={formik.handleBlur}
+										error={
+											formik.touched.paymentMethod &&
+											Boolean(formik.errors.paymentMethod)
+										}>
+										<MenuItem value=''>Select Payment Method</MenuItem>
+										<MenuItem value='creditCard'>Credit Card</MenuItem>
+										<MenuItem value='cash'>Cash</MenuItem>
+										<MenuItem value='qrCode'>QR Code</MenuItem>
+									</Select>
+								</FormControl>
+
+								<div style={{ width: '40%' }}>
+									<TextField
+										color='secondary'
+										type='text'
+										label='Fare Cost'
+										value={'$$$$'}
+										InputProps={{
+											readOnly: true,
+										}}
+									/>
+								</div>
+							</div>
+						</div>
+
+						<div>{showSnackbar()}</div>
+
+						<div
+							style={{
+								alignItems: 'center',
+								justifyContent: 'space-around',
+								display: 'flex',
+								marginTop: '52px',
+								position: 'sticky',
+							}}>
+							<button
+								type='submit'
+								disabled={!formik.isValid}
+								style={{
+									width: '30%',
+									padding: '8px',
+									color: 'white',
+									backgroundColor: formik.isValid ? '#088F8F' : 'rgba(0,0,0,0.6)',
+									cursor: formik.isValid ? 'pointer' : 'not-allowed',
+								}}
+								onMouseOver={e => {
+									if (formik.isValid) {
+										e.target.style.backgroundColor = '#064f4f';
+									}
+								}}
+								onMouseOut={e => {
+									if (formik.isValid) {
+										e.target.style.backgroundColor = '#088F8F';
+									}
+								}}>
+								Submit
+							</button>
+						</div>
+					</form>
+					{showCreditCardPopup && (
 						<Modal
-							open={deleteModalOpen}
-							onClose={handleCloseDeleteModal}
+							open={showCreditCardPopup}
+							onClose={() => {
+								setShowCreditCardPopup(false), setCreditCardValid(false);
+							}}
 							aria-labelledby='modal-modal-title'
 							aria-describedby='modal-modal-description'>
 							<Box
@@ -619,339 +915,72 @@ function CustomerBookingsUnwrapped() {
 								}}>
 								<Typography
 									id='modal-modal-title'
-									sx={{ alignSelf: 'flex-start' }}
+									sx={{ alignSelf: 'flex-start', fontWeight: 'bold' }}
 									variant='h4'
 									component='h2'>
-									Delete warning!
+									Credit Card Details
 								</Typography>
-								<Typography id='modal-modal-description' sx={{ mt: 4 }}>
-									Are you sure you want to delete the following bookings:
-								</Typography>
-								<hr style={{ borderTop: '2px dashed black  ' }} />
-								<ul style={{ color: '#088F8F', alignSelf: 'flex-start' }}>
-									{selectedRows.map(bookingId => (
-										<li key={bookingId}>Booking ID {bookingId}</li>
-									))}
-								</ul>
-								<div style={{ marginTop: 'auto', display: 'flex', gap: '10px' }}>
-									<button
-										style={{
-											padding: '8px',
-											width: '100px',
-											color: 'white',
-											backgroundColor: 'grey',
-										}}
-										onClick={handleCloseDeleteModal}>
-										Cancel
-									</button>
-
-									<button
-										style={{
-											padding: '8px',
-											width: '100px',
-											color: 'white',
-											backgroundColor: '#c40000',
-										}}
-										onClick={() => {
-											handleDeleteSelected();
-											handleCloseDeleteModal();
-										}}>
-										Delete
-									</button>
-								</div>
-							</Box>
-						</Modal>
-					</div>
-				</div>
-			</div>
-
-			<div
-				id='custform'
-				style={{
-					display: 'none',
-					marginLeft: 'auto',
-					flex: 0.5,
-					backgroundColor: 'rgba(255, 255, 255, 0.9)',
-					color: 'white',
-					padding: '20px',
-					width: '50%',
-					height: '100%',
-				}}>
-				<h1 style={{ textAlign: 'center', color: 'black', marginBottom: '40px' }}>
-					Customer Booking Page
-				</h1>
-				<h4 style={{ textAlign: 'center', color: 'black', marginBottom: '40px' }}>
-					Create a booking below!
-				</h4>
-
-				<form onSubmit={formik.handleSubmit}>
-					<div style={{ padding: '20px', height: '50vh' }}>
-						<div style={{ marginBottom: '20px' }}>
-							<TextField
-								color='secondary'
-								fullWidth
-								id='locationTo'
-								name='locationTo'
-								label='Location To'
-								placeholder='Select a location'
-								value={formik.values.locationTo}
-								onChange={formik.handleChange}
-								onBlur={formik.handleBlur}
-								error={
-									formik.touched.locationTo && Boolean(formik.errors.locationTo)
-								}
-								helperText={formik.touched.locationTo && formik.errors.locationTo}
-								onClick={handleLocationToFieldClick}
-								ref={locationToRef}
-							/>
-							{showSavedLocationTo && (
-								<div
-									style={{
-										position: 'absolute',
-										top: '100%',
-										left: 0,
-										right: 0,
-										bottom: 0,
-										zIndex: 1,
-										background: 'rgba(0, 0, 0, 0.5)',
-									}}>
-									<SavedLocation onLocationSelect={handleLocationToSelect} />
-								</div>
-							)}
-						</div>
-
-						<div style={{ marginBottom: '20px' }}>
-							<TextField
-								color='secondary'
-								fullWidth
-								id='locationFrom'
-								name='locationFrom'
-								label='Location From'
-								placeholder='Select a location'
-								value={formik.values.locationFrom}
-								onChange={formik.handleChange}
-								onBlur={formik.handleBlur}
-								error={
-									formik.touched.locationFrom &&
-									Boolean(formik.errors.locationFrom)
-								}
-								helperText={
-									formik.touched.locationFrom && formik.errors.locationFrom
-								}
-								onClick={handleLocationFromFieldClick}
-								ref={locationFromRef}
-							/>
-							{showSavedLocationFrom && (
-								<div
-									style={{
-										position: 'absolute',
-										top: '100%',
-										left: 0,
-										right: 0,
-										bottom: 0,
-										zIndex: 1,
-										background: 'rgba(0, 0, 0, 0.5)',
-									}}>
-									<SavedLocation onLocationSelect={handleLocationFromSelect} />
-								</div>
-							)}
-						</div>
-
-						<div
-							style={{
-								marginBottom: '20px',
-								display: 'flex',
-								justifyContent: 'space-between',
-							}}>
-							<TextField
-								color='secondary'
-								fullWidth
-								id='scheduledTime'
-								name='scheduledTime'
-								label='Scheduled Time'
-								type='number'
-								placeholder='24 hour standard (xxxx)'
-								value={formik.values.scheduledTime}
-								onChange={formik.handleChange}
-								onBlur={formik.handleBlur}
-								style={{ width: '40%' }}
-								error={
-									formik.touched.scheduledTime &&
-									Boolean(formik.errors.scheduledTime)
-								}
-								helperText={
-									formik.touched.scheduledTime && formik.errors.scheduledTime
-								}
-							/>
-
-							<TextField
-								color='secondary'
-								fullWidth
-								id='scheduledDate'
-								name='scheduledDate'
-								type='date'
-								value={formik.values.scheduledDate}
-								onChange={formik.handleChange}
-								onBlur={formik.handleBlur}
-								style={{ width: '40%' }}
-								error={
-									formik.touched.scheduledDate &&
-									Boolean(formik.errors.scheduledDate)
-								}
-								helperText={
-									formik.touched.scheduledDate && formik.errors.scheduledDate
-								}
-							/>
-						</div>
-
-						<div
-							style={{
-								marginBottom: '20px',
-								display: 'flex',
-								justifyContent: 'space-between',
-							}}>
-							<FormControl style={{ width: '40%' }}>
-								<InputLabel>Payment Method</InputLabel>
-								<Select
-									color='secondary'
-									id='paymentMethod'
-									name='paymentMethod'
-									value={formik.values.paymentMethod}
-									onChange={formik.handleChange}
-									onBlur={formik.handleBlur}
-									error={
-										formik.touched.paymentMethod &&
-										Boolean(formik.errors.paymentMethod)
-									}>
-									<MenuItem value=''>Select Payment Method</MenuItem>
-									<MenuItem value='creditCard'>Credit Card</MenuItem>
-									<MenuItem value='cash'>Cash</MenuItem>
-									<MenuItem value='qrCode'>QR Code</MenuItem>
-								</Select>
-							</FormControl>
-
-							<div style={{ width: '40%' }}>
-								<TextField
-									color='secondary'
-									type='text'
-									label='Fare Cost'
-									value={'$$$$'}
-									InputProps={{
-										readOnly: true,
-									}}
-								/>
-							</div>
-						</div>
-					</div>
-
-					<div>{showSnackbar()}</div>
-
-					<div
-						style={{
-							alignItems: 'center',
-							justifyContent: 'space-around',
-							display: 'flex',
-							marginTop: '52px',
-							position: 'sticky',
-						}}>
-						<button
-							type='submit'
-							disabled={!formik.isValid}
-							style={{
-								width: '30%',
-								padding: '8px',
-								color: 'white',
-								backgroundColor: formik.isValid ? '#088F8F' : 'rgba(0,0,0,0.6)',
-								cursor: formik.isValid ? 'pointer' : 'not-allowed',
-							}}
-							onMouseOver={e => {
-								if (formik.isValid) {
-									e.target.style.backgroundColor = '#064f4f';
-								}
-							}}
-							onMouseOut={e => {
-								if (formik.isValid) {
-									e.target.style.backgroundColor = '#088F8F';
-								}
-							}}>
-							Submit
-						</button>
-					</div>
-				</form>
-				{showCreditCardPopup && (
-					<Modal
-						open={showCreditCardPopup}
-						onClose={() => {
-							setShowCreditCardPopup(false), setCreditCardValid(false);
-						}}
-						aria-labelledby='modal-modal-title'
-						aria-describedby='modal-modal-description'>
-						<Box
-							sx={style}
-							style={{
-								display: 'flex',
-								flexDirection: 'column',
-								alignItems: 'left',
-							}}>
-							<Typography
-								id='modal-modal-title'
-								sx={{ alignSelf: 'flex-start', fontWeight: 'bold' }}
-								variant='h4'
-								component='h2'>
-								Credit Card Details
-							</Typography>
-							<hr style={{ borderTop: '2px dashed black' }} />
-							<form onSubmit={handleCreditCardSubmit}>
-								<div>
-									<CardElement
-										options={{
-											style: {
-												base: {
-													fontSize: '16px',
-													color: '#424770',
-													'::placeholder': {
-														color: '#aab7c4',
+								<hr style={{ borderTop: '2px dashed black' }} />
+								<form onSubmit={handleCreditCardSubmit}>
+									<div>
+										<CardElement
+											options={{
+												style: {
+													base: {
+														fontSize: '16px',
+														color: '#424770',
+														'::placeholder': {
+															color: '#aab7c4',
+														},
+													},
+													invalid: {
+														color: '#9e2146',
 													},
 												},
-												invalid: {
-													color: '#9e2146',
-												},
-											},
-										}}
-										onChange={event => setCreditCardValid(event.complete)}
-									/>
-								</div>
-								<div style={{ marginTop: '50%', display: 'flex', gap: '10px' }}>
-									<button
-										style={{
-											padding: '8px',
-											width: '100px',
-											color: 'white',
-											backgroundColor: 'grey',
-										}}
-										onClick={() => {
-											setShowCreditCardPopup(false),
-												setCreditCardValid(false);
-										}}>
-										Cancel
-									</button>
-									<button
-										type='submit'
-										style={{
-											color: 'white',
-											width: '100px',
-											backgroundColor: creditCardValid ? '#088F8F' : 'gray',
-											cursor: creditCardValid ? 'pointer' : 'not-allowed',
-										}}
-										disabled={!creditCardValid}>
-										Submit
-									</button>
-								</div>
-							</form>
-						</Box>
-					</Modal>
-				)}
+											}}
+											onChange={event => setCreditCardValid(event.complete)}
+										/>
+									</div>
+									<div style={{ marginTop: '50%', display: 'flex', gap: '10px' }}>
+										<button
+											style={{
+												padding: '8px',
+												width: '100px',
+												color: 'white',
+												backgroundColor: 'grey',
+											}}
+											onClick={() => {
+												setShowCreditCardPopup(false),
+													setCreditCardValid(false);
+											}}>
+											Cancel
+										</button>
+										<button
+											type='submit'
+											style={{
+												color: 'white',
+												width: '100px',
+												backgroundColor: creditCardValid
+													? '#088F8F'
+													: 'gray',
+												cursor: creditCardValid ? 'pointer' : 'not-allowed',
+											}}
+											disabled={!creditCardValid}>
+											Submit
+										</button>
+									</div>
+								</form>
+							</Box>
+						</Modal>
+					)}
+				</div>
+				<div></div>
 			</div>
+			{showSavedLocationTo ? (
+				<SavedLocation onLocationSelect={handleLocationToSelect} />
+			) : (
+				<></>
+			)}
 		</div>
 	);
 }
