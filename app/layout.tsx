@@ -32,12 +32,12 @@ export default function RootLayout({
 	const pathname = headersList.get('x-invoke-path') || '/';
 	// Change html data-theme to see light/dark mode (light: valentine, dark: night)
 	return (
-		<html lang='en' data-theme='night'>
+		<html lang='en'>
 			<head>
 				<meta content='width=device-width, initial-scale=1' name='viewport' />
 				<meta name='description' content='' />
 			</head>
-			<body className={poppins.className}>
+			<body className={poppins.className} data-theme='night'>
 				<Navbar
 					type={
 						pathname.startsWith('/customer') || pathname.startsWith('/driver')

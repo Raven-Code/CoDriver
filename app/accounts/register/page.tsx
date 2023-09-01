@@ -27,8 +27,9 @@ export default function Register() {
 		tooltip.classList.toggle('hidden');
 		tooltip.classList.toggle('tooltip-open');
 	};
-	const updateForm = async (e: any) => {
+	const updateForm = (e: any) => {
 		const { name, value } = e.target;
+		setData(data => ({ ...data, [name]: value })); // Update form data
 		const regex = {
 			username: /^(?![0-9])[a-zA-Z][^!@#$%^&*()_+{}[]:;<>,.?~\\\/\\|]*[a-zA-Z0-9]$/,
 			email: /^\w{2,}@[\w\.-]{2,}\.[a-z]{2,}$/i,
@@ -69,8 +70,7 @@ export default function Register() {
 		} else if (name === 'confirmPassword' && data.password === data.confirmPassword) {
 			setValid(data => ({ ...data, confirmPassword: true }));
 		} else if (name == 'tos') setValid(data => ({ ...data, tos: e.target.checked }));
-
-		setData(data => ({ ...data, [name]: value })); // Update form data
+		console.log(data);
 	};
 	const handleSubmit = async (e: any) => {
 		e.preventDefault();
@@ -106,7 +106,8 @@ export default function Register() {
 						type='text'
 						name='username'
 						id='username'
-						onChange={updateForm}
+						onInput={updateForm}
+						onMouseLeave={updateForm}
 						onFocus={updateTooltip}
 						onBlur={updateTooltip}
 						className='block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
@@ -128,7 +129,8 @@ export default function Register() {
 						type='text'
 						name='mail'
 						id='mail'
-						onChange={updateForm}
+						onInput={updateForm}
+						onMouseLeave={updateForm}
 						onFocus={updateTooltip}
 						onBlur={updateTooltip}
 						className='block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
@@ -150,7 +152,8 @@ export default function Register() {
 						type='password'
 						name='password'
 						id='password'
-						onChange={updateForm}
+						onInput={updateForm}
+						onMouseLeave={updateForm}
 						className='block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
 						placeholder=' '
 					/>
@@ -174,7 +177,8 @@ export default function Register() {
 						type='password'
 						name='confirmPassword'
 						id='confirmPassword'
-						onChange={updateForm}
+						onInput={updateForm}
+						onMouseLeave={updateForm}
 						onFocus={updateTooltip}
 						onBlur={updateTooltip}
 						className='block py-2.5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
@@ -198,6 +202,7 @@ export default function Register() {
 							type='checkbox'
 							className='checkbox checkbox-primary me-2 w-5 h-5'
 							onChange={updateForm}
+							onMouseLeave={updateForm}
 						/>
 						<label htmlFor='tos'>
 							Agree to the&nbsp;
@@ -211,7 +216,7 @@ export default function Register() {
 					<ReCAPTCHA
 						sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_KEY || ''}
 						onChange={() => setValid(data => ({ ...data, captcha: true }))}
-						onExpired={() => setValid(data => ({ ...data, captcha: true }))}
+						onExpired={() => setValid(data => ({ ...data, captcha: false }))}
 					/>
 				</div>
 				<button className='btn btn-primary w-full mb-2' onClick={handleSubmit}>
