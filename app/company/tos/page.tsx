@@ -105,7 +105,7 @@ export default function Tos(): JSX.Element {
 					subject to the exclusive jurisdiction of the courts in Asia/Singapore. Please
 					read these Terms carefully before using our Services. If you have any questions
 					or concerns regarding these Terms, please contact us using our&nbsp;
-					<a className='link link-secondary' href='https://github.com/Raven-Code'>
+					<a className='link link-secondary' href='https://github.com/Emaryllis'>
 						Instagram
 					</a>
 					.

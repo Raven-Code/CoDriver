@@ -2,18 +2,18 @@
   "name": "codriver",
   "version": "0.1.0",
   "private": true,
-  "author": "Raven-Code",
+  "author": "Emaryllis",
   "license": "Apache-2.0",
   "description": "CoDriver's Server",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Raven-Code/CoDriver.git"
+    "url": "git+https://github.com/Emaryllis/CoDriver.git"
   },
   "keywords": [
     "codriver"
   ],
   "bugs": {
-    "url": "https://github.com/Raven-Code/CoDriver/issues"
+    "url": "https://github.com/Emaryllis/CoDriver/issues"
   },
   "scripts": {
     "dev": "set NODE_OPTIONS=--max-old-space-size=4096 && next dev -p 4000",

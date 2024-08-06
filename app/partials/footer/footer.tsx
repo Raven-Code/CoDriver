@@ -19,14 +19,14 @@ export default function Footer(): JSX.Element {
 					</a>
 					<a
 						className='link link-hover footerLink'
-						href='https://github.com/Raven-Code'
+						href='https://github.com/Emaryllis'
 						target='_blank'
 						rel='noopener noreferrer'>
 						Design
 					</a>
 					<a
 						className='link link-hover footerLink'
-						href='https://github.com/Raven-Code'
+						href='https://github.com/Emaryllis'
 						target='_blank'
 						rel='noopener noreferrer'>
 						Advertisement
@@ -62,28 +62,28 @@ export default function Footer(): JSX.Element {
 					<div className='flex'>
 						<a
 							className='bg-base-100 rounded-full p-1.5 m-1 ms-0 hover:bg-base-200'
-							href='https://github.com/Raven-Code'
+							href='https://github.com/Emaryllis'
 							target='_blank'
 							rel='noopener noreferrer'>
 							<Facebook />
 						</a>
 						<a
 							className='bg-base-100 rounded-full p-1.5 m-1 hover:bg-base-200'
-							href='https://github.com/Raven-Code'
+							href='https://github.com/Emaryllis'
 							target='_blank'
 							rel='noopener noreferrer'>
 							<Twitter />
 						</a>
 						<a
 							className='bg-base-100 rounded-full p-1.5 m-1 hover:bg-base-200'
-							href='https://github.com/Raven-Code'
+							href='https://github.com/Emaryllis'
 							target='_blank'
 							rel='noopener noreferrer'>
 							<Instagram />
 						</a>
 						<a
 							className='bg-base-100 rounded-full p-1.5 m-1 hover:bg-base-200'
-							href='https://github.com/Raven-Code'
+							href='https://github.com/Emaryllis'
 							target='_blank'
 							rel='noopener noreferrer'>
 							<LinkedIn />

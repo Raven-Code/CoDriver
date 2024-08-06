@@ -1,6 +1,6 @@
 <br/>
 <p align="center">
-  <a href="https://github.com/Raven-Code/CoDriver">
+  <a href="https://github.com/Emaryllis/CoDriver">
     <img src="logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -9,18 +9,18 @@
   <p align="center">
     <img src="https://wakatime.com/badge/user/a834cc3a-cc0a-4aa3-83a4-a825e4e9c3bf/project/f3a32c10-9299-4428-a0c1-3f9176d93ac3.svg" alt="Development Time" />
     <br />
-    <a href="https://github.com/Raven-Code/CoDriver"><b>Explore the docs »</b></a>
+    <a href="https://github.com/Emaryllis/CoDriver"><b>Explore the docs »</b></a>
     <br/>
     <br/>
-    <a href="https://github.com/Raven-Code/CoDriver">View Demo</a>
+    <a href="https://github.com/Emaryllis/CoDriver">View Demo</a>
     &nbsp;
-    <a href="https://github.com/Raven-Code/CoDriver/issues">Report Bug</a>
+    <a href="https://github.com/Emaryllis/CoDriver/issues">Report Bug</a>
     &nbsp;
-    <a href="https://github.com/Raven-Code/CoDriver/issues">Request Feature</a>
+    <a href="https://github.com/Emaryllis/CoDriver/issues">Request Feature</a>
   </p>
 </p>
 
-<!-- ![Downloads](https://img.shields.io/github/downloads/Raven-Code/CoDriver/total) ![Contributors](https://img.shields.io/github/contributors/Raven-Code/CoDriver?color=dark-green) ![Forks](https://img.shields.io/github/forks/Raven-Code/CoDriver?style=social) ![Stargazers](https://img.shields.io/github/stars/Raven-Code/CoDriver?style=social) ![Issues](https://img.shields.io/github/issues/Raven-Code/CoDriver) ![License](https://img.shields.io/github/license/Raven-Code/CoDriver) -->
+<!-- ![Downloads](https://img.shields.io/github/downloads/Emaryllis/CoDriver/total) ![Contributors](https://img.shields.io/github/contributors/Emaryllis/CoDriver?color=dark-green) ![Forks](https://img.shields.io/github/forks/Emaryllis/CoDriver?style=social) ![Stargazers](https://img.shields.io/github/stars/Emaryllis/CoDriver?style=social) ![Issues](https://img.shields.io/github/issues/Emaryllis/CoDriver) ![License](https://img.shields.io/github/license/Emaryllis/CoDriver) -->
 
 ## Table Of Contents
 
@@ -122,7 +122,7 @@ Before you begin, make sure you have the following software installed on your sy
 1. Clone the CoDriver repository to your local machine using Git:
 
 ```sh
-git clone https://github.com/Raven-Code/CoDriver.git
+git clone https://github.com/Emaryllis/CoDriver.git
 ```
 
 2. Navigate to the directory
@@ -198,7 +198,7 @@ With CoDriver, carpooling becomes a seamless and enjoyable journey. Say goodbye 
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
--   If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/Raven-Code/CoDriver/issues/new) to discuss it, or directly create a pull request after you edit the _README.md_ file with necessary changes.
+-   If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/Emaryllis/CoDriver/issues/new) to discuss it, or directly create a pull request after you edit the _README.md_ file with necessary changes.
 -   Please make sure you check your spelling and grammar.
 -   Create individual PR for each suggestion.
 
@@ -386,4 +386,4 @@ limitations under the License.
 
 ## Authors
 
--   [**Raven-Code**](https://github.com/Raven-Code)
+-   [**Emaryllis**](https://github.com/Emaryllis)
